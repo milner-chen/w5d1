@@ -31,6 +31,13 @@ class Hash
   # This returns 0 because rspec will break if it returns nil
   # Make sure to implement an actual Hash#hash method
   def hash
-    0
+    res = []
+    alphabet = ("a".."z").to_a
+    self.each do |key, value|
+      value_hash = alphabet.index(value).hash
+      key_hash = key.hash
+      res << (value_hash + key_hash).hash
+    end
+    res.sum
   end
 end
