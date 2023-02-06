@@ -4,6 +4,13 @@ end
 
 class Array
   def hash
+    res = []
+    self.each_with_index do |el, i|
+      value_hash = el.hash
+      index_hash = i.hash
+      res << (value_hash + index_hash).hash
+    end
+    res.sum
   end
 end
 
