@@ -16,6 +16,14 @@ end
 
 class String
   def hash
+    res = []
+    alphabet = ("a".."z").to_a
+    self.each_char.with_index do |char, i|
+      char_hash = alphabet.index(char).hash
+      index_hash = i.hash
+      res << (char_hash + index_hash).hash
+    end
+    res.sum
   end
 end
 
